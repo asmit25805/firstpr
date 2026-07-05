@@ -6,7 +6,6 @@
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-4FD68C.svg)](./CONTRIBUTING.md)
 [![Node](https://img.shields.io/badge/node-%3E%3D18.17-333.svg)](https://nodejs.org)
 
-> Renaming note: "FirstPR" is just a starting name so the code has something consistent to call itself. Rename it freely — `package.json` (root, `client/`, `server/`) and the title in `index.html` are the only places the name actually appears.
 
 ---
 

@@ -1,0 +1,23 @@
+{
+  "name": "firstpr",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Find a beginner-friendly GitHub issue, then get an AI mentor that teaches instead of hands you the fix.",
+  "license": "MIT",
+  "workspaces": [
+    "client",
+    "server"
+  ],
+  "scripts": {
+    "dev": "concurrently -n CLIENT,SERVER -c blue,green \"npm run dev -w client\" \"npm run dev -w server\"",
+    "build": "npm run build -w server && npm run build -w client",
+    "typecheck": "npm run typecheck -w server && tsc -b client",
+    "start:server": "npm run start -w server"
+  },
+  "devDependencies": {
+    "concurrently": "^10.0.3"
+  },
+  "engines": {
+    "node": ">=18.17.0"
+  }
+}

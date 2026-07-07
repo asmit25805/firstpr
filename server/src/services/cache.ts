@@ -1,0 +1,25 @@
+interface CacheEntry<T> {
+  value: T;
+  expiresAt: number;
+}
+
+/** A tiny in-memory cache with per-entry expiry. No external dependency, no database. */
+export class TTLCache<T> {
+  private store = new Map<string, CacheEntry<T>>();
+
+  constructor(private ttlMs: number) {}
+
+  get(key: string): T | undefined {
+    const entry = this.store.get(key);
+    if (!entry) return undefined;
+    if (Date.now() > entry.expiresAt) {
+      this.store.delete(key);
+      return undefined;
+    }
+    return entry.value;
+  }
+
+  set(key: string, value: T): void {
+    this.store.set(key, { value, expiresAt: Date.now() + this.ttlMs });
+  }
+}
